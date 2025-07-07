@@ -2,6 +2,7 @@
 {% block title %}Novo Contato{% endblock %}
 {% block content %}
     <h2>Novo Contato</h2>
+    <button type="button" class="btn btn-secondary mb-3" onclick="window.history.back()">Voltar</button>
     <form method="POST">
         {{ form.hidden_tag() }}
         <div class="mb-3">
