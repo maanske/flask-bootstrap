@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Novo Contato{% endblock %}
+{% block content %}
+    <h2>Novo Contato</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.assunto.label(class="form-label") }}
+            {{ form.assunto(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.mensagem.label(class="form-label") }}
+            {{ form.mensagem(class="form-control") }}
+        </div>
+        <div class="mb-3 form-check">
+            {{ form.respondido(class="form-check-input") }}
+            {{ form.respondido.label(class="form-check-label") }}
+        </div>
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+{% endblock %}

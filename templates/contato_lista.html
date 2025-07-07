@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Contatos{% endblock %}
+{% block content %}
+    <h2>Lista de Contatos</h2>
+    <form method="GET" class="mb-3">
+        <input type="text" name="pesquisa" placeholder="Pesquisar por nome" class="form-control" style="width: 300px; display: inline-block;">
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Assunto</th>
+                <th>Mensagem</th>
+                <th>Respondido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contato in contatos %}
+            <tr>
+                <td>{{ contato.nome }}</td>
+                <td>{{ contato.email }}</td>
+                <td>{{ contato.assunto }}</td>
+                <td>{{ contato.mensagem }}</td>
+                <td>{{ 'Sim' if contato.respondido else 'Não' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
