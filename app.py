@@ -28,14 +28,14 @@ def contato():
         )
         db.session.add(contato)
         db.session.commit()
-        return redirect(url_for('contato_lista'))
+        return redirect(url_for('contato_lista'))  
     return render_template('contato.html', form=form)
 
 @app.route('/contatos')
 def contato_lista():
     pesquisa = request.args.get('pesquisa')
     if pesquisa:
-        contatos = Contato.query.filter(Contato.nome.contains(pesquisa)).all()
+        contatos = Contato.query.filter(Contato.nome.ilike(f'%{pesquisa}%')).all()
     else:
         contatos = Contato.query.all()
     return render_template('contato_lista.html', contatos=contatos)
