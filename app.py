@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, url_for
 from models import db, Contato
 from forms import ContatoForm
 from flask_migrate import Migrate
-from flask import render_template_string
+from flask import render_template
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua_chave_secreta'
@@ -140,6 +140,12 @@ def contato_lista():
     </body>
     </html>
     '''
+
+
+@app.route('/contato/<int:id>')
+def contatoDetail(id):
+    return render_template('contato_detail.html', id=id)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
