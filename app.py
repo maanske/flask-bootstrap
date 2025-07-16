@@ -144,7 +144,8 @@ def contato_lista():
 
 @app.route('/contato/<int:id>')
 def contatoDetail(id):
-    return render_template('contato_detail.html', id=id)
+    obj=Contato.query.get(id)
+    return render_template('contato_detail.html', obj=obj)
 
 
 if __name__ == '__main__':

@@ -22,6 +22,7 @@
             </div>
         {% endif %}
         <h2>Lista de Contatos</h2>
+        <td><a href="{{url_for('contatoDetail', id=linha.id)}}"></a></td>
         <button type="button" class="btn btn-secondary mb-3" onclick="window.history.back()">Voltar</button>
 
         <form method="GET" class="mb-3">
