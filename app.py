@@ -3,11 +3,23 @@ from models import db, Contato
 from forms import ContatoForm
 from flask_migrate import Migrate
 from flask import render_template
+from dotenv import load_dotenv
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
+import os
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'sua_chave_secreta'
+app.config['SECRET_KEY'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contatos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+bcrypt = Bcrypt(app)
 
 db.init_app(app)
 migrate = Migrate(app, db)
