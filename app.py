@@ -8,6 +8,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import logout_user
 
 
 app = Flask(__name__)
@@ -159,9 +160,11 @@ def contatoDetail(id):
     obj=Contato.query.get(id)
     return render_template('contato_detail.html', obj=obj)
 
+@app.route('/sair/')
+def logout():
+    logout_user()
+    return redirect(url_for('homepage'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
